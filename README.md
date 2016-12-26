@@ -41,10 +41,10 @@ RxBus.getInstance().with(this)
 ![info](http://upload-images.jianshu.io/upload_images/1845254-6afe4f9183bcb19f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 具体的注释有说明，这里进行简单介绍。
-`AbsRxBus` 是抽象的实现方式，发送和接收的方法在这里实现。
-`RxBus`、`RxBusBehavior`和`RxBusReplsy`是具体的单例实现，区别在于没有订阅者消息缓存方式。
-`EventBusMsg` 消息对象，发送的消息最终会以一个EventBusMsg发送出去。
-`EventFilter` 消息过滤机制，过滤接收消息，如果想加入更多判断可修改此处实现。
-`EventNext` 消息接收，这里主要是为了防止catch后无法接收消息，没有什么特殊。
-`EventObservable` RxBus的接口定义
-`EventSubscribeBuilder` 构建订阅者，为了方便调用封装RxJava调用逻辑。
+- `AbsRxBus` 是抽象的实现方式，发送和接收的方法在这里实现。
+- `RxBus`、`RxBusBehavior`和`RxBusReplsy`是具体的单例实现，区别在于没有订阅者消息缓存方式。
+- `EventBusMsg` 消息对象，发送的消息最终会以一个EventBusMsg发送出去。
+- `EventFilter` 消息过滤机制，过滤接收消息，如果想加入更多判断可修改此处实现。
+- `EventNext` 消息接收，这里主要是为了防止catch后无法接收消息，没有什么特殊。
+- `EventObservable` RxBus的接口定义
+- `EventSubscribeBuilder` 构建订阅者，为了方便调用封装RxJava调用逻辑。
