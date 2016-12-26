@@ -1,8 +1,6 @@
-# rxbus
-一个RxJava代替EventBus的实现库
 ### 依懒库
 
-```
+```gradle
 //RxJava
 compile 'io.reactivex:rxjava:1.1.6'
 compile 'io.reactivex:rxandroid:1.2.1'
@@ -15,13 +13,14 @@ compile 'com.trello:rxlifecycle-components:0.6.1'
 ### 调用
 
 发送消息
-```
+```java
 RxBus.getInstance().send("main", "来自Activity数据");
 ```
 接收消息
-```
+```java
 RxBus.getInstance().with(this)
-        .setUri("main")
+        .setCode(EventBusMsg.EMPTY) //过滤接收code
+        .setUri("main") //过滤接收uri
         .observeOn(AndroidSchedulers.mainThread())
         .onNext(new Action1<EventBusMsg<String>>() {
             @Override
@@ -31,6 +30,9 @@ RxBus.getInstance().with(this)
             }
        })
 ```
+发送消息有多个实现，对应的接收通过`setCode`和`setUri`来进行过滤，默认code为0，uri为空字符串。
+
+![send](http://upload-images.jianshu.io/upload_images/1845254-ff832aa74b7a4965.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 实现
 
@@ -38,7 +40,7 @@ RxBus.getInstance().with(this)
 
 ![info](http://upload-images.jianshu.io/upload_images/1845254-6afe4f9183bcb19f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-具体的说明注释有说明，这里进行简单介绍。
+具体的注释有说明，这里进行简单介绍。
 `AbsRxBus` 是抽象的实现方式，发送和接收的方法在这里实现。
 `RxBus`、`RxBusBehavior`和`RxBusReplsy`是具体的单例实现，区别在于没有订阅者消息缓存方式。
 `EventBusMsg` 消息对象，发送的消息最终会以一个EventBusMsg发送出去。
