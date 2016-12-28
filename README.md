@@ -11,6 +11,12 @@ compile 'com.trello:rxlifecycle-components:0.6.1'
 ```
 
 ### 调用
+[JitPack](https://jitpack.io/)导包方式：
+```
+compile 'com.github.wittyneko:rxbus:0.1.0'
+```
+[![](https://jitpack.io/v/wittyneko/rxbus.svg)](https://jitpack.io/#wittyneko/rxbus) [rxbus:0.1.0](https://jitpack.io/#wittyneko/rxbus/0.1.0)
+
 
 发送消息
 ```java
